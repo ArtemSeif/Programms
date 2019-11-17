@@ -7,30 +7,30 @@
 
 int main()
 {
-    int x, y; //переменные координаты(в цикле используются для машины)
-    int numb_house_line, numb_house_column,x2,y2; // параметры отвечающие за дом
-    int speed_bus,amon_car;//переменные для машины
-    int numb_trees_line, numb_trees_column, h,color_trees,size_tree,x1,y1;//переменные для дерева
-    int x3,y3,amon_obl; //облака
-    int x4,y4;//переменные для дороги
-    int start = 0;//остальные переменные
+    int x, y; //ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ»(Гў Г¶ГЁГЄГ«ГҐ ГЁГ±ГЇГ®Г«ГјГ§ГіГѕГІГ±Гї Г¤Г«Гї Г¬Г ГёГЁГ­Г»)
+    int numb_house_line, numb_house_column,x2,y2; // ГЇГ Г°Г Г¬ГҐГІГ°Г» Г®ГІГўГҐГ·Г ГѕГ№ГЁГҐ Г§Г  Г¤Г®Г¬
+    int speed_bus,amon_car;//ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ Г¤Г«Гї Г¬Г ГёГЁГ­Г»
+    int numb_trees_line, numb_trees_column, h,color_trees,size_tree,x1,y1;//ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ Г¤Г«Гї Г¤ГҐГ°ГҐГўГ 
+    int x3,y3,amon_obl; //Г®ГЎГ«Г ГЄГ 
+    int x4,y4;//ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ Г¤Г«Гї Г¤Г®Г°Г®ГЈГЁ
+    int start = 0;//Г®Г±ГІГ Г«ГјГ­Г»ГҐ ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ
 
 
-    cout <<  "Введите количество этажей дома: ";
+    cout <<  "Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЅГІГ Г¦ГҐГ© Г¤Г®Г¬Г : ";
     cin >> numb_house_column;
-    cout <<  "\nВведите количество подъездов дома: ";
+    cout <<  "\nГ‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ®Г¤ГєГҐГ§Г¤Г®Гў Г¤Г®Г¬Г : ";
     cin  >> numb_house_line;
-    cout << "\nВведите количество деревьев: " ;
+    cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г¤ГҐГ°ГҐГўГјГҐГў: " ;
     cin   >> numb_trees_line ;
-    cout << "\nВведите количество облаков: " ;
+    cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г®ГЎГ«Г ГЄГ®Гў: " ;
     cin   >> amon_obl ;
-    cout << "\nВведите количество машинок: " ;
-    cin >> amon_car;//параметры введённые пользователями
+    cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г¬Г ГёГЁГ­Г®ГЄ: " ;
+    cin >> amon_car;//ГЇГ Г°Г Г¬ГҐГІГ°Г» ГўГўГҐГ¤ВёГ­Г­Г»ГҐ ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«ГїГ¬ГЁ
 
     Limit(numb_house_line, numb_house_column,numb_trees_line,amon_obl,amon_car);
 
 
-    txCreateWindow (1280,768);//создаём окн
+    txCreateWindow (1280,768);//Г±Г®Г§Г¤Г ВёГ¬ Г®ГЄГ­
 
     StartDraw();
 
@@ -42,27 +42,21 @@ int main()
     RECT start_prog = { 1044, 620,1260,700};
     RECT plustree = { 1044, 520,1144,600};
     RECT plusfloor = { 1160, 520,1260,600};
-    RECT plusporch = { 1044, 620,1144,700};
-    RECT plusoblako = { 1160, 620,1260,700};//области(кнопки)
+    RECT plusporch = Г¬Г ГёГЁГ­
 
-    h = numb_trees_line % 8;
-    numb_trees_column = numb_trees_line /8;//определяем количество "столбцов и строк" деревьев
-    x=0;
-    y=620;//начальные координаты машины
-
-    x1=525;//начальные координаты деревьев
+    x1=525;//Г­Г Г·Г Г«ГјГ­Г»ГҐ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» Г¤ГҐГ°ГҐГўГјГҐГў
     y1=200;
 
     speed_bus = 0;
 
     srand(unsigned(time(0)));
     size_tree = rand() % 3;
-    srand(unsigned(time(0)));// рандом для размера и цвета дерева
+    srand(unsigned(time(0)));// Г°Г Г­Г¤Г®Г¬ Г¤Г«Гї Г°Г Г§Г¬ГҐГ°Г  ГЁ Г¶ГўГҐГІГ  Г¤ГҐГ°ГҐГўГ 
     color_trees = rand() % 3 ;
 
 
 
-    for (int i=1; 1==1; x +=speed_bus)//начало цикла
+    for (int i=1; 1==1; x +=speed_bus)//Г­Г Г·Г Г«Г® Г¶ГЁГЄГ«Г 
     {
 
 
@@ -70,22 +64,22 @@ int main()
         {
             if (In (txMousePos(), start_prog))
             {
-                start = 1;//программа начинается при нажатии по кнопке
+                start = 1;//ГЇГ°Г®ГЈГ°Г Г¬Г¬Г  Г­Г Г·ГЁГ­Г ГҐГІГ±Гї ГЇГ°ГЁ Г­Г Г¦Г ГІГЁГЁ ГЇГ® ГЄГ­Г®ГЇГЄГҐ
             }
         }
 
         if(GetAsyncKeyState(VK_RETURN))
         {
-            start = 1;//программа начинается при нажатии enter
+            start = 1;//ГЇГ°Г®ГЈГ°Г Г¬Г¬Г  Г­Г Г·ГЁГ­Г ГҐГІГ±Гї ГЇГ°ГЁ Г­Г Г¦Г ГІГЁГЁ enter
         }
 
-        if (start == 1)//проверка на старт цикла
+        if (start == 1)//ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  Г±ГІГ Г°ГІ Г¶ГЁГЄГ«Г 
         {
 
             txBegin();
             txSetFillColour(RGB(99, 90, 90));
 
-            x3=20;//координаты для облаков
+            x3=20;//ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» Г¤Г«Гї Г®ГЎГ«Г ГЄГ®Гў
             y3=40;
 
             for (i=1; i<=amon_obl; i++)
@@ -94,19 +88,19 @@ int main()
                 x3=x3+140;
             }
 
-            x4=0;//координаты для дороги
+            x4=0;//ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» Г¤Г«Гї Г¤Г®Г°Г®ГЈГЁ
             y4=688;
 
-            road(x4, y4);//рисование дороги
+            road(x4, y4);//Г°ГЁГ±Г®ГўГ Г­ГЁГҐ Г¤Г®Г°Г®ГЈГЁ
 
             for (i=0; i<amon_car; i++)
             {
-                paintcar (x+i*200,y);//рисование машины
+                paintcar (x+i*200,y);//Г°ГЁГ±Г®ГўГ Г­ГЁГҐ Г¬Г ГёГЁГ­Г»
             }
 
-            x2=30;//переменные для дома
+            x2=30;//ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ Г¤Г«Гї Г¤Г®Г¬Г 
             y2=120;
-            paintblock(x2, y2, numb_house_column, numb_house_line);//рисование дома
+            paintblock(x2, y2, numb_house_column, numb_house_line);//Г°ГЁГ±Г®ГўГ Г­ГЁГҐ Г¤Г®Г¬Г 
 
 
 
@@ -118,7 +112,7 @@ int main()
             {
                 for (int i=1; i<=8; i++)
                 {
-                    paintTrees(x1,y1,size_tree,color_trees);//рисование деревьев 1 фаза
+                    paintTrees(x1,y1,size_tree,color_trees);//Г°ГЁГ±Г®ГўГ Г­ГЁГҐ Г¤ГҐГ°ГҐГўГјГҐГў 1 ГґГ Г§Г 
                     x1=x1+65;
                 }
                 y1+=100;
@@ -129,7 +123,7 @@ int main()
             {
                 for (int i=1; i<=h; i++)
                 {
-                    paintTrees(x1,y1,size_tree,color_trees);//рисование деревьев 2 фаза
+                    paintTrees(x1,y1,size_tree,color_trees);//Г°ГЁГ±Г®ГўГ Г­ГЁГҐ Г¤ГҐГ°ГҐГўГјГҐГў 2 ГґГ Г§Г 
                     x1=x1+65;
                 }
             }
@@ -137,29 +131,29 @@ int main()
 
             txSetColor (TX_BLACK);
             txSetFillColor (TX_BLACK);
-            txRectangle(1024, 0,1280,768);//рисование панельки с кнопками
+            txRectangle(1024, 0,1280,768);//Г°ГЁГ±Г®ГўГ Г­ГЁГҐ ГЇГ Г­ГҐГ«ГјГЄГЁ Г± ГЄГ­Г®ГЇГЄГ Г¬ГЁ
             txSetFillColor (TX_GRAY);
             txRectangle(1044, 20,1260,100);
             txRectangle(1044, 420,1260,500);
             txRectangle(1044, 320,1260,400);
             txSelectFont ("Comic Sans MS", 29);
-            txTextOut (1045, 50, "Автобус останавливается");
+            txTextOut (1045, 50, "ГЂГўГІГ®ГЎГіГ± Г®Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГІГ±Гї");
             txRectangle(1044, 120,1260,200);
-            txTextOut (1045, 150, "Автобус едет вправо");
+            txTextOut (1045, 150, "ГЂГўГІГ®ГЎГіГ± ГҐГ¤ГҐГІ ГўГЇГ°Г ГўГ®");
             txRectangle(1044, 220,1260,300);
-            txTextOut (1045, 250, "Автобус едет влево");
-            txTextOut (1045, 350, "Автобус едет вверх");
-            txTextOut (1045, 450, "Автобус едет вниз");//кнопки машинки
+            txTextOut (1045, 250, "ГЂГўГІГ®ГЎГіГ± ГҐГ¤ГҐГІ ГўГ«ГҐГўГ®");
+            txTextOut (1045, 350, "ГЂГўГІГ®ГЎГіГ± ГҐГ¤ГҐГІ ГўГўГҐГ°Гµ");
+            txTextOut (1045, 450, "ГЂГўГІГ®ГЎГіГ± ГҐГ¤ГҐГІ ГўГ­ГЁГ§");//ГЄГ­Г®ГЇГЄГЁ Г¬Г ГёГЁГ­ГЄГЁ
 
             txSelectFont ("Comic Sans MS", 20);
             txRectangle(1044, 520,1144,600);
-            txTextOut (1045, 550, "+1 дерево");
+            txTextOut (1045, 550, "+1 Г¤ГҐГ°ГҐГўГ®");
             txRectangle(1160, 520,1260,600);
-            txTextOut (1161, 550, "+1 этаж дома");
+            txTextOut (1161, 550, "+1 ГЅГІГ Г¦ Г¤Г®Г¬Г ");
             txRectangle(1044, 620,1144,700);
-            txTextOut (1045, 650, "+1 подъезд");
+            txTextOut (1045, 650, "+1 ГЇГ®Г¤ГєГҐГ§Г¤");
             txRectangle(1160, 620,1260,700);
-            txTextOut (1161, 650, "+1 облако");//кнопки элементов
+            txTextOut (1161, 650, "+1 Г®ГЎГ«Г ГЄГ®");//ГЄГ­Г®ГЇГЄГЁ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў
 
 
             if (x>=1024 + amon_car*120)
@@ -176,39 +170,39 @@ int main()
 
             if (speed_bus >=5)
             {
-                speed_bus=5;//ограничение скорости вперёд
+                speed_bus=5;//Г®ГЈГ°Г Г­ГЁГ·ГҐГ­ГЁГҐ Г±ГЄГ®Г°Г®Г±ГІГЁ ГўГЇГҐГ°ВёГ¤
             }
 
             if (speed_bus <=-3)
             {
-                speed_bus=-3;//ограничение скорости назад
+                speed_bus=-3;//Г®ГЈГ°Г Г­ГЁГ·ГҐГ­ГЁГҐ Г±ГЄГ®Г°Г®Г±ГІГЁ Г­Г Г§Г Г¤
             }
 
             if(GetAsyncKeyState('1'))
             {
-                speed_bus=0;//остановка
+                speed_bus=0;//Г®Г±ГІГ Г­Г®ГўГЄГ 
             }
             if(GetAsyncKeyState(VK_ESCAPE))
             {
-                break;//остановка программы
+                break;//Г®Г±ГІГ Г­Г®ГўГЄГ  ГЇГ°Г®ГЈГ°Г Г¬Г¬Г»
                 return 0;
             }
             if(GetAsyncKeyState('3'))
             {
-                y+=1;//кнопкой вверх
+                y+=1;//ГЄГ­Г®ГЇГЄГ®Г© ГўГўГҐГ°Гµ
             }
             if(GetAsyncKeyState('4'))
             {
-                y=y-1;//кнопкой вниз
+                y=y-1;//ГЄГ­Г®ГЇГЄГ®Г© ГўГ­ГЁГ§
             }
 
             if(y==558)
             {
-                y=y+1;//ограничение скорости вверх
+                y=y+1;//Г®ГЈГ°Г Г­ГЁГ·ГҐГ­ГЁГҐ Г±ГЄГ®Г°Г®Г±ГІГЁ ГўГўГҐГ°Гµ
             }
             if(y==705)
             {
-                y=y-1;//ограничение скорости вниз
+                y=y-1;//Г®ГЈГ°Г Г­ГЁГ·ГҐГ­ГЁГҐ Г±ГЄГ®Г°Г®Г±ГІГЁ ГўГ­ГЁГ§
             }
             road(0,768);//
             txSetFillColor (TX_GREEN);
@@ -219,7 +213,7 @@ int main()
             {
                 if (In (txMousePos(), stop))
                 {
-                    speed_bus=0;//остановка кнопкой
+                    speed_bus=0;//Г®Г±ГІГ Г­Г®ГўГЄГ  ГЄГ­Г®ГЇГЄГ®Г©
                 }
             }
 
@@ -229,7 +223,7 @@ int main()
             {
                 if (In (txMousePos(), speedup))
                 {
-                    speed_bus=+3;//увеличение скорости кнопкой
+                    speed_bus=+3;//ГіГўГҐГ«ГЁГ·ГҐГ­ГЁГҐ Г±ГЄГ®Г°Г®Г±ГІГЁ ГЄГ­Г®ГЇГЄГ®Г©
                 }
             }
 
@@ -237,7 +231,7 @@ int main()
             {
                 if (In (txMousePos(), speeddown))
                 {
-                    speed_bus-=1;//уменьшение скорости кнопкой
+                    speed_bus-=1;//ГіГ¬ГҐГ­ГјГёГҐГ­ГЁГҐ Г±ГЄГ®Г°Г®Г±ГІГЁ ГЄГ­Г®ГЇГЄГ®Г©
                 }
             }
 
@@ -245,7 +239,7 @@ int main()
             {
                 if (In (txMousePos(), high_bus_up))
                 {
-                    y-=2;//движение кнопкой вверх
+                    y-=2;//Г¤ГўГЁГ¦ГҐГ­ГЁГҐ ГЄГ­Г®ГЇГЄГ®Г© ГўГўГҐГ°Гµ
                 }
             }
 
@@ -253,22 +247,22 @@ int main()
             {
                 if (In (txMousePos(), high_bus_down))
                 {
-                    y+=2;//движение кнопкой вниз
+                    y+=2;//Г¤ГўГЁГ¦ГҐГ­ГЁГҐ ГЄГ­Г®ГЇГЄГ®Г© ГўГ­ГЁГ§
                 }
             }
             //RECT plustree = { 1044, 520,1144,600};
             //RECT plusfloor = { 1160, 520,1260,600};
             //RECT plusporch = { 1044, 620,1144,700};
-            //RECT plusoblako = { 1160, 620,1260,700};//области(кнопки)
+            //RECT plusoblako = { 1160, 620,1260,700};//Г®ГЎГ«Г Г±ГІГЁ(ГЄГ­Г®ГЇГЄГЁ)
             if(txMouseButtons() & 1)
             {
                 if (In (txMousePos(), plustree))
                 {
                     if (numb_trees_line >=7)
                     {
-                        numb_trees_line -=1;//+1 дерево
+                        numb_trees_line -=1;//+1 Г¤ГҐГ°ГҐГўГ®
                     }
-                    else {numb_trees_line +=1;}//+1 дерево
+                    else {numb_trees_line +=1;}//+1 Г¤ГҐГ°ГҐГўГ®
                 }
             }
             if(txMouseButtons() & 1)
@@ -277,9 +271,9 @@ int main()
                 {
                     if (numb_house_column >=6)
                     {
-                        numb_house_column -=1;//+1 дерево
+                        numb_house_column -=1;//+1 Г¤ГҐГ°ГҐГўГ®
                     }
-                    else {numb_house_column +=1;}//+1 дерево
+                    else {numb_house_column +=1;}//+1 Г¤ГҐГ°ГҐГўГ®
                 }
             }
             if(txMouseButtons() & 1)
@@ -288,9 +282,9 @@ int main()
                 {
                     if (numb_house_line >=7)
                     {
-                        numb_house_line -=1;//+1 дерево
+                        numb_house_line -=1;//+1 Г¤ГҐГ°ГҐГўГ®
                     }
-                    else {numb_house_line +=1;}//+1 дерево
+                    else {numb_house_line +=1;}//+1 Г¤ГҐГ°ГҐГўГ®
                 }
             }
             if(txMouseButtons() & 1)
@@ -299,15 +293,15 @@ int main()
                 {
                     if (amon_obl >=7)
                     {
-                        amon_obl -=1;//+1 дерево
+                        amon_obl -=1;//+1 Г¤ГҐГ°ГҐГўГ®
                     }
-                    else {amon_obl +=1;}//+1 дерево
+                    else {amon_obl +=1;}//+1 Г¤ГҐГ°ГҐГўГ®
                 }
             }
             Limit(numb_house_line, numb_house_column,numb_trees_line,amon_obl,amon_car);
             h = numb_trees_line % 8;
-            numb_trees_column = numb_trees_line /8;//определяем количество "столбцов и строк" деревьев
-            x1=525;//меняем координаты для деревьев
+            numb_trees_column = numb_trees_line /8;//Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГ¬ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® "Г±ГІГ®Г«ГЎГ¶Г®Гў ГЁ Г±ГІГ°Г®ГЄ" Г¤ГҐГ°ГҐГўГјГҐГў
+            x1=525;//Г¬ГҐГ­ГїГҐГ¬ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» Г¤Г«Гї Г¤ГҐГ°ГҐГўГјГҐГў
             y1=200;
         }
 
